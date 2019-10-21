@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
 {% load staticfiles %}
+{% csrf_token %}
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -40,11 +41,15 @@
 
     <style>
     .fab{
-    color:white;
-    text-size:20px;
+    color:#fff;
+    font-size:30px;
+    size:9x;
+
+
     }
     .fas{
     color:white;
+    font-size:30px;
     }
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -83,8 +88,24 @@
         <a class="nav-link" href="{% url 'allblogs' %}">Blog</a>
       </li>
 
+
     </ul>
       <ul class="navbar-nav ml-auto">
+          {% if user.is_authenticated %}
+          <form method="post">
+          <li class="nav-item active">
+        <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+          </li></form>
+          {% else %}
+
+          <li class="nav-item active">
+        <a class="nav-link" href="{% url 'singup' %}">SingUp</a>
+      </li>
+         <li class="nav-item active">
+        <a class="nav-link" href="{% url 'login' %}">Login</a>
+      </li>
+          {% endif %}
+
           <li><i class="fab fa-instagram"></i></li>
           <li><i class="fab fa-linkedin"></i></li>
           <li><i class="fab fa-github-square"></i></li>
