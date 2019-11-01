@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Singup</title>
+</head>
+<body>
+<h1>SingUp!</h1>
+<form action="{% url 'singup' %}", method="POST">
+    {% if error %}
+    {{error}}
+    {% endif%}
+    {%  csrf_token %}
+    <p>User Name:</p>
+    <input type="text" name='username' />
+    <p>Password:</p>
+    <input type="password" name="password1" />
+    <p>Confirm Password:</p>
+    <input type="password" name="password2" />
+    <br>
+    <br>
+    <input type="submit" value="SingUp" >
+
+
+</form>
+</body>
+</html>
